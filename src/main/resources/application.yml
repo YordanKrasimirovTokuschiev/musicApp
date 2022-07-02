@@ -7,7 +7,7 @@ spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     password: 123456781
-    url: jdbc:mysql://localhost:3306/cooking-mania-db?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/workshop-music?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
     username: root
   jpa:
     hibernate:

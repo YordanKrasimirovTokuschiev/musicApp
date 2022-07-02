@@ -21,16 +21,18 @@ public class UserEntity extends BaseEntity{
         return name;
     }
 
-    public void setName(String name) {
+    public UserEntity setName(String name) {
         this.name = name;
+        return this;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public UserEntity setPassword(String password) {
         this.password = password;
+        return this;
     }
 
     public List<UserRoleEntity> getRoles() {
