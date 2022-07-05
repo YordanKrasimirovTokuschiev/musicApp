@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @SuppressWarnings("deprecation")
 @Configuration
@@ -26,14 +27,16 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/js/**", "/css/**", "/img/**").permitAll()
+                // това може да се направи и със requestMatcher(PathRequest.toStaticResources().atCommonLocation()).permitAll();
+                // но трябва /img да бъде преименувано във всички файлове със /images иначе не работи.
                 .antMatchers("/", "/users/login", "/users/register").permitAll()
                 .antMatchers("/**")
                 .authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/users/login")
-                .usernameParameter("username")
-                .passwordParameter("password")
+                .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
+                .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
                 .defaultSuccessUrl("/home")
                 .failureForwardUrl("/users/login-error");
     }
