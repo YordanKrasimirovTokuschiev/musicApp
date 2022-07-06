@@ -14,11 +14,11 @@ import javax.validation.constraints.Size;
 public class UserRegisterBindingModel {
 
     @NotEmpty
-    @Min(3)
+    @Size(min = 3)
     private String username;
 
     @NotEmpty
-    @Min(3)
+    @Size(min = 3)
     private String fullName;
 
     @NotEmpty
