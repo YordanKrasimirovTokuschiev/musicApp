@@ -1,5 +1,9 @@
 package com.softuni.musicapp.web;
 
+import com.softuni.musicapp.models.binding.UserRegisterBindingModel;
+import com.softuni.musicapp.models.service.UserRegisterServiceModel;
+import com.softuni.musicapp.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +16,14 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/users")
 public class UserController {
 
+    private final ModelMapper modelMapper;
+    private final UserService userService;
+
+    public UserController(ModelMapper modelMapper, UserService userService) {
+        this.modelMapper = modelMapper;
+        this.userService = userService;
+    }
+
     @GetMapping("/login")
     public String login() {
         return "login";
@@ -20,6 +32,15 @@ public class UserController {
     @GetMapping("/register")
     public String register() {
         return "register";
+    }
+
+    @PostMapping("/register")
+    public String registerAndLoginUser(UserRegisterBindingModel registerBindingModel) {
+        UserRegisterServiceModel userServiceModel = modelMapper.map(registerBindingModel, UserRegisterServiceModel.class);
+
+        userService.registerAndLoginUser(userServiceModel);
+
+        return "redirect:/home";
     }
 
     @PostMapping("/login-error")

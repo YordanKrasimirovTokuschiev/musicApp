@@ -1,6 +1,9 @@
 package com.softuni.musicapp.service;
 
-public interface UserService {
+import com.softuni.musicapp.models.service.UserRegisterServiceModel;
 
+public interface UserService {
     void seedUsers();
+
+    void registerAndLoginUser(UserRegisterServiceModel serviceModel);
 }
