@@ -56,6 +56,13 @@ public class UserController {
             return "redirect:/users/register";
         }
 
+        if (userService.userNameExists(registerBindingModel.getUsername())) {
+            redirectAttributes.addFlashAttribute("registerBindingModel", registerBindingModel);
+            redirectAttributes.addFlashAttribute("userExistsError", true);
+
+            return "redirect:/users/register";
+        }
+
         UserRegisterServiceModel userServiceModel = modelMapper.map(registerBindingModel, UserRegisterServiceModel.class);
 
         userService.registerAndLoginUser(userServiceModel);
