@@ -28,6 +28,11 @@ public class UserController {
         this.userService = userService;
     }
 
+    @ModelAttribute("registerBindingModel")
+    public UserRegisterBindingModel createBindingModel() {
+        return new UserRegisterBindingModel();
+    }
+
     @GetMapping("/login")
     public String login() {
         return "login";

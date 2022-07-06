@@ -16,6 +16,7 @@
         <div class="row g-3">
             <form
                 th:action="@{/users/register}"
+                th:object="${registerBindingModel}"
                 method="POST">
                 <!-- Username -->
                 <div>
@@ -24,6 +25,7 @@
                     </div>
                     <div class="col-auto">
                         <input name="username"
+                               th:value="*{username}"
                                type="text"
                                id="inputUsername"
                                class="form-control"
