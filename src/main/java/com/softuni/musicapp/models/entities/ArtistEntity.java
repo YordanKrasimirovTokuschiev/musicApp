@@ -1,5 +1,7 @@
 package com.softuni.musicapp.models.entities;
 
+import com.google.gson.annotations.Expose;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -8,9 +10,11 @@ import javax.persistence.Table;
 @Table(name = "artists")
 public class ArtistEntity extends BaseEntity {
 
+    @Expose
     @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
+    @Expose
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String careerInformation;
 
     public String getName() {
