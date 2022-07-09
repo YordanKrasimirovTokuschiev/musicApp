@@ -70,16 +70,15 @@ public class UserController {
         return "redirect:/home";
     }
 
+
     @PostMapping("/login-error")
-    public ModelAndView failedLogin(@ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
-                                        String username) {
-        ModelAndView modelAndView = new ModelAndView();
+    public String failedLogin(@ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
+                                    String username,
+                                    RedirectAttributes redirectAttributes) {
 
-        modelAndView.addObject("bad_credentials", true);
-        modelAndView.addObject("username", username);
+        redirectAttributes.addFlashAttribute("bad_credentials", true);
+        redirectAttributes.addFlashAttribute("username", username);
 
-        modelAndView.setViewName("/login");
-
-        return modelAndView;
+        return "redirect:/users/login";
     }
 }
