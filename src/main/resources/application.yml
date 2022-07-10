@@ -16,6 +16,9 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
+    carousel:
+      images: aerosmith.jpg, madonna.jpg, metallica.jpg, prodigys.jpg, queen.jpg, rollingstones.jpg
+      refresh-cron: "* */1 * * * *"
 
 
 
