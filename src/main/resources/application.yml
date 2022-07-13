@@ -16,9 +16,16 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
-    carousel:
-      images: aerosmith.jpg, madonna.jpg, metallica.jpg, prodigys.jpg, queen.jpg, rollingstones.jpg
-      refresh-cron: "* */1 * * * *"
+
+servlet:
+  multipart:
+    max-file-size: 5MB
+    max-request-size: 5MB
+    enabled: true
+
+carousel:
+  images: aerosmith.jpg, madonna.jpg, metallica.jpg, prodigys.jpg, queen.jpg, rollingstones.jpg
+  refresh-cron: "0 */10 * * * *"
 
 
 
