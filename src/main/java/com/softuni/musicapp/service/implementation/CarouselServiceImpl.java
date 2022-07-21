@@ -1,6 +1,7 @@
 package com.softuni.musicapp.service.implementation;
 
 import com.softuni.musicapp.service.CarouselService;
+import com.softuni.musicapp.service.ImageShuffler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,11 +16,14 @@ import java.util.List;
 @Service
 public class CarouselServiceImpl implements CarouselService {
 
+    private final ImageShuffler imageShuffler;
     private Logger LOGGER = LoggerFactory.getLogger(CarouselServiceImpl.class);
 
     private List<String> images = new ArrayList<>();
 
-    public CarouselServiceImpl(@Value("${}carousel.images") List<String> images) {
+    public CarouselServiceImpl(@Value("${carousel.images}") List<String> images,
+                               ImageShuffler imageShuffler) {
+        this.imageShuffler = imageShuffler;
         this.images.addAll(images);
     }
 
