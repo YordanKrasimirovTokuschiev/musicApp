@@ -19,17 +19,7 @@ public class AlbumViewModel {
     private Instant releaseDate;
     private Genre genre;
 
-    public AlbumViewModel(String name, String imageUrl, String videoUrl,
-                          String description, Integer copies, BigDecimal price,
-                          Instant releaseDate, Genre genre) {
-        this.name = name;
-        this.imageUrl = imageUrl;
-        this.videoUrl = videoUrl;
-        this.description = description;
-        this.copies = copies;
-        this.price = price;
-        this.releaseDate = releaseDate;
-        this.genre = genre;
+    public AlbumViewModel() {
     }
 
     public String getName() {

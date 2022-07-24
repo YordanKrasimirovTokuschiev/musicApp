@@ -2,9 +2,8 @@ package com.softuni.musicapp.models.binding;
 
 import com.softuni.musicapp.models.entities.enums.Genre;
 
-import javax.persistence.Column;
 import java.math.BigDecimal;
-import java.time.Instant;
+import java.time.LocalDate;
 
 public class AlbumAddBindingModel {
 
@@ -14,6 +13,9 @@ public class AlbumAddBindingModel {
      private String description;
      private Integer copies;
      private BigDecimal price;
+     private LocalDate releaseDate;
+     private Genre genre;
+
 
      public String getName() {
           return name;
@@ -69,18 +71,14 @@ public class AlbumAddBindingModel {
           return this;
      }
 
-     public Instant getReleaseDate() {
+     public LocalDate getReleaseDate() {
           return releaseDate;
      }
 
-     public AlbumAddBindingModel setReleaseDate(Instant releaseDate) {
+     public AlbumAddBindingModel setReleaseDate(LocalDate releaseDate) {
           this.releaseDate = releaseDate;
           return this;
      }
-
-     private Instant releaseDate;
-     private Genre genre;
-
      public Genre getGenre() {
           return genre;
      }
