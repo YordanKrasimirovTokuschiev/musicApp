@@ -1,20 +1,33 @@
 package com.softuni.musicapp.models.binding;
 
 import com.softuni.musicapp.models.entities.enums.Genre;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class AlbumAddBindingModel {
 
+     @Size(min = 5, max = 20)
      private String name;
      private String imageUrl;
      private String videoUrl;
+     @Size(min = 5)
      private String description;
+     @Min(0)
      private Integer copies;
+     @DecimalMin("0")
      private BigDecimal price;
+     @DateTimeFormat(pattern = "yyyy-MM-dd")
      private LocalDate releaseDate;
+     @NotNull
      private Genre genre;
+     @NotNull
+     private String artist;
 
 
      public String getName() {
@@ -88,6 +101,15 @@ public class AlbumAddBindingModel {
           return this;
      }
 
+     public String getArtist() {
+          return artist;
+     }
+
+     public AlbumAddBindingModel setArtist(String artist) {
+          this.artist = artist;
+          return this;
+     }
+
      @Override
      public String toString() {
           return "AlbumAddBindingModel{" +
@@ -99,6 +121,7 @@ public class AlbumAddBindingModel {
                   ", price=" + price +
                   ", releaseDate=" + releaseDate +
                   ", genre=" + genre +
+                  ", artist='" + artist + '\'' +
                   '}';
      }
 }

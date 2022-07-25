@@ -26,8 +26,8 @@ public class AlbumServiceImpl implements AlbumService {
     public void createAlbum(AlbumServiceModel serviceModel) {
         AlbumEntity albumEntity = modelMapper.map(serviceModel, AlbumEntity.class);
         UserEntity creator = userRepository
-                .findByUsername(serviceModel.getUsername())
-                        .orElseThrow(() -> new IllegalArgumentException("Creator " + serviceModel.getUsername() + " could not be found"));
+                .findByUsername(serviceModel.getUser())
+                        .orElseThrow(() -> new IllegalArgumentException("Creator " + serviceModel.getUser() + " could not be found"));
         albumEntity.setUserEntity(creator);
         albumRepository.save(albumEntity);
     }
