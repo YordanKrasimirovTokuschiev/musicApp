@@ -1,11 +1,11 @@
 package com.softuni.musicapp.models.service;
 import com.softuni.musicapp.models.entities.enums.Genre;
+import com.softuni.musicapp.service.AlbumService;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 
 public class AlbumServiceModel {
-
     private String name;
     private String imageUrl;
     private String videoUrl;

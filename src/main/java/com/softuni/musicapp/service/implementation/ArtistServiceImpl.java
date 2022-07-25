@@ -53,4 +53,12 @@ public class ArtistServiceImpl implements ArtistService {
             }
         }
     }
+
+    @Override
+    public ArtistEntity findByName(String artist) {
+
+        return artistRepository
+                .findByName(artist)
+                .orElseThrow(IllegalArgumentException::new);
+    }
 }

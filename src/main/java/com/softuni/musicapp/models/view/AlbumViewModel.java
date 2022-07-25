@@ -2,9 +2,6 @@ package com.softuni.musicapp.models.view;
 
 import com.softuni.musicapp.models.entities.enums.Genre;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import java.math.BigDecimal;
 import java.time.Instant;
 
@@ -18,6 +15,7 @@ public class AlbumViewModel {
     private BigDecimal price;
     private Instant releaseDate;
     private Genre genre;
+    private String artist;
 
     public AlbumViewModel() {
     }
@@ -91,6 +89,15 @@ public class AlbumViewModel {
 
     public AlbumViewModel setGenre(Genre genre) {
         this.genre = genre;
+        return this;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public AlbumViewModel setArtist(String artist) {
+        this.artist = artist;
         return this;
     }
 }

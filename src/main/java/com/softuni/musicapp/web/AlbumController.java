@@ -2,6 +2,7 @@ package com.softuni.musicapp.web;
 
 import com.softuni.musicapp.models.binding.AlbumAddBindingModel;
 import com.softuni.musicapp.models.service.AlbumServiceModel;
+import com.softuni.musicapp.models.view.AlbumViewModel;
 import com.softuni.musicapp.service.AlbumService;
 import com.softuni.musicapp.service.ArtistService;
 import org.modelmapper.ModelMapper;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.time.ZoneId;
 
 @Controller
 @RequestMapping("/albums")
@@ -60,8 +62,22 @@ public class AlbumController {
 
         albumServiceModel.setUser(principal.getUsername());
 
+        albumServiceModel.setReleaseDate(albumAddBindingModel
+                .getReleaseDate().atStartOfDay(ZoneId.systemDefault()).toInstant());
+
         albumService.createAlbum(albumServiceModel);
 
         return "redirect:/home";
     }
+
+    @GetMapping("/details/{id}")
+    public String details(@PathVariable Long id, Model model){
+
+        AlbumViewModel albumViewModel = albumService.findById(id);
+
+        model.addAttribute("album", albumViewModel);
+
+        return "details";
+    }
 }
+
